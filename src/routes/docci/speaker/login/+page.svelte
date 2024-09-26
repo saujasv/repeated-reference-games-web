@@ -10,15 +10,15 @@
 		if ((speakername.length > 0)&&(listenername.length > 0)) {
 			pair.set(`${speakername}-${listenername}`);
             let pairstr = `${speakername}-${listenername}`;
-            let data = await fetch(`${db}/pairs.json`).then(response => response.json());
+            let data = await fetch(`${db}/pairs/${pairstr}.json`).then(response => response.json());
             console.log(data);
-            if (!data.hasOwnProperty(pairstr)) {
-                fetch(`${db}/pairs.json`, {
+            if (data === null) {
+                fetch(`${db}/pairs/${pairstr}.json`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({[pairstr]: rounds})
+                    body: JSON.stringify(rounds)
                 });
             }
 
