@@ -88,7 +88,7 @@ import { get } from 'svelte/store';
         goto(`${base}/docci/listener/login`)
       }
 
-      context = games[currentGame].speaker_view
+      context = games[currentGame].listener_view
       
       if (!games[currentGame].rounds[currentRound].hasOwnProperty("message")) {
           waitingForSpeaker = true;
